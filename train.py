@@ -339,6 +339,7 @@ def train(
     save_cp=True,
     log_step=20,
     img_scale=0.5,
+    beginepoch=0,
 ):
     train_dataset = Yolo_dataset(config.train_label, config)
     val_dataset = Yolo_dataset(config.val_label, config)
@@ -390,6 +391,7 @@ def train(
         Optimizer:       {config.TRAIN_OPTIMIZER}
         Dataset classes: {config.classes}
         Train label path:{config.train_label}
+        BeginEpoch:      {beginepoch}
         Pretrained:
     """
     )
@@ -423,7 +425,7 @@ def train(
     # scheduler = CosineAnnealingWarmRestarts(optimizer, 0.001, 1e-6, 20)
 
     model.train()
-    for epoch in range(epochs):
+    for epoch in range(beginepoch,epochs):
         # model.train()
         epoch_loss = 0
         epoch_step = 0
@@ -577,6 +579,13 @@ def get_args(**kwargs):
         default=10,
         help="number of training epochs",
     )
+    parser.add_argument(
+        "-beginepoch",
+        dest="BEGIN_EPOCH",
+        type=int,
+        default=0,
+        help="number of training epochs",
+    )
     args = vars(parser.parse_args())
 
     for k in args.keys():
@@ -641,6 +650,7 @@ if __name__ == "__main__":
             config=cfg,
             epochs=cfg.TRAIN_EPOCHS,
             device=device,
+            beginepoch=cfg.BEGIN_EPOCH
         )
     except KeyboardInterrupt:
         torch.save(model.state_dict(), "INTERRUPTED.pth")

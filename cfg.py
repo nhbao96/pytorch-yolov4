@@ -46,6 +46,7 @@ Cfg.blur = 0
 Cfg.gaussian = 0
 Cfg.boxes = 60  # box num
 Cfg.TRAIN_EPOCHS = 300
+Cfg.BEGIN_EPOCH = 0
 Cfg.train_label = 'data/train.txt'
 Cfg.val_label = 'data/val.txt'
 Cfg.TRAIN_OPTIMIZER = 'adam'
@@ -62,5 +63,5 @@ elif Cfg.cutmix:
 elif Cfg.mosaic:
     Cfg.mixup = 3
 
-Cfg.checkpoints = 'checkpoints'
+Cfg.checkpoints = 'content/drive/MyDrive/dabb-yolo/IN'
 Cfg.TRAIN_TENSORBOARD_DIR = 'log'
