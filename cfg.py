@@ -63,5 +63,5 @@ elif Cfg.cutmix:
 elif Cfg.mosaic:
     Cfg.mixup = 3
 
-Cfg.checkpoints = 'content/drive/MyDrive/dabb-yolo/IN'
+Cfg.checkpoints = '/content/drive/MyDrive/dabb-yolo/IN'
 Cfg.TRAIN_TENSORBOARD_DIR = 'log'
