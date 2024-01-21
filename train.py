@@ -547,7 +547,7 @@ def get_args(**kwargs):
         "--load",
         dest="load",
         type=str,
-        default=None,
+        default='/content/drive/MyDrive/dabb-yolo/IN/Yolov4_epoch19.pth',
         help="Load model from a .pth file",
     )
     parser.add_argument(
